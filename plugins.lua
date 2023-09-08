@@ -82,6 +82,27 @@ local plugins = {
     end,
   },
 
+  -- auto close tag
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "tsx",
+      "jsx",
+      "php",
+      "markdown",
+    },
+    config = function()
+      require "custom.configs.ts-autotag"
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
