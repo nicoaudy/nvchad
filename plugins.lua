@@ -73,6 +73,15 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    "rcarriga/nvim-notify",
+    event = "BufWinEnter",
+    config = function()
+      vim.notify = require "notify"
+      -- vim.notify = require("notify").setup { background_colour = "#000000" }
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
