@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -45,6 +45,32 @@ local plugins = {
     config = function()
       require("better_escape").setup()
     end,
+  },
+  {
+    -- github copilot free alternative
+    "Exafunction/codeium.vim",
+    event = "VeryLazy",
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.g.codeium_no_map_tab = 1 --disable the <Tab> binding
+      vim.keymap.set("i", "<C-g>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true })
+      vim.keymap.set("i", "<C-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true })
+      vim.keymap.set("i", "<C-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true })
+      vim.keymap.set("i", "<C-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true })
+    end,
+  },
+  {
+    -- Multicursor <C-n>
+    "mg979/vim-visual-multi",
+    lazy = false,
   },
 
   -- To make a plugin not be loaded
