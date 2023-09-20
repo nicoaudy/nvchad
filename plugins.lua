@@ -90,6 +90,15 @@ local plugins = {
     end,
   },
 
+  -- dressing | neovim popup
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.dressing"
+    end,
+  },
+
   -- auto close tag
   {
     "windwp/nvim-ts-autotag",
