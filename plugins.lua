@@ -4,7 +4,6 @@ local overrides = require "custom.configs.overrides"
 local plugins = {
 
   -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -79,6 +78,15 @@ local plugins = {
     config = function()
       vim.notify = require "notify"
       -- vim.notify = require("notify").setup { background_colour = "#000000" }
+    end,
+  },
+
+  -- rayso
+  {
+    "TobinPalmer/rayso.nvim",
+    cmd = { "Rayso" },
+    config = function()
+      require("rayso").setup {}
     end,
   },
 
