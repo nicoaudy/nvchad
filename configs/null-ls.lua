@@ -20,6 +20,11 @@ local sources = {
 
   -- Lua
   b.formatting.stylua,
+
+  -- Go
+  b.formatting.gofmt,
+  b.formatting.goimports,
+  b.formatting.goimports_reviser,
 }
 
 null_ls.setup {

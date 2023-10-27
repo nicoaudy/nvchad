@@ -11,6 +11,7 @@ M.treesitter = {
     "tsx",
     "markdown",
     "markdown_inline",
+    "go",
   },
   indent = {
     enable = true,
@@ -36,6 +37,11 @@ M.mason = {
 
     "intelephense",
     "php-cs-fixer",
+
+    -- golang
+    "gopls",
+    "goimports",
+    "goimports-reviser",
   },
 }
 
