@@ -4,8 +4,7 @@ local capabilities = config.capabilities
 
 local lspconfig = require "lspconfig"
 
-function organize_imports()
-  print "Organize Imports command called"
+local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",
     arguments = { vim.api.nvim_buf_get_name(0) },
@@ -14,8 +13,8 @@ function organize_imports()
 end
 
 lspconfig.tsserver.setup {
-  on_attach = on_attach,
   capabilities = capabilities,
+  on_attach = on_attach,
   init_options = {
     preferences = {
       disableSuggestions = true,
@@ -37,12 +36,12 @@ lspconfig["emmet_ls"].setup {
 }
 
 lspconfig["intelephense"].setup {
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
-  capabilities = capabilities,
 }
 
 -- configure default formats
