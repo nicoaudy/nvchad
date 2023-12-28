@@ -4,7 +4,8 @@ local capabilities = config.capabilities
 
 local lspconfig = require "lspconfig"
 
-local function organize_imports()
+function organize_imports()
+  print "Organize Imports command called"
   local params = {
     command = "_typescript.organizeImports",
     arguments = { vim.api.nvim_buf_get_name(0) },
@@ -28,36 +29,6 @@ lspconfig.tsserver.setup {
   },
 }
 
--- configure gopls server
-lspconfig["gopls"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- configure html server
-lspconfig["html"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- configure html server
-lspconfig["html"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- configure css server
-lspconfig["cssls"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- configure tailwindcss server
-lspconfig["tailwindcss"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
 -- configure emmet language server
 lspconfig["emmet_ls"].setup {
   capabilities = capabilities,
@@ -73,3 +44,12 @@ lspconfig["intelephense"].setup {
   end,
   capabilities = capabilities,
 }
+
+-- configure default formats
+local servers = { "gopls", "html", "cssls", "tailwindcss" }
+for _, lsp in pairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end

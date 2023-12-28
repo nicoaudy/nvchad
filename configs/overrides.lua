@@ -29,11 +29,12 @@ M.mason = {
 
     -- web dev stuff
     "css-lsp",
+    "emmet-ls",
     "html-lsp",
     "typescript-language-server",
-    "deno",
-    "prettier",
     "tailwindcss-language-server",
+    "prettierd",
+    "eslint_d",
 
     "intelephense",
     "php-cs-fixer",

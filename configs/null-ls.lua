@@ -6,16 +6,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local sources = {
 
   -- webdev stuff
-  -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.deno_fmt.with {
-    condition = function(u)
-      return u.root_has_file { "deno.json" }
-    end,
-  },
-  -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
-  b.formatting.prettier,
+  b.formatting.prettierd,
+  b.diagnostics.eslint_d,
 
-  b.diagnostics.eslint,
   b.formatting.phpcsfixer,
 
   -- Lua
@@ -38,6 +31,7 @@ null_ls.setup {
         buffer = bufnr,
       }
       vim.api.nvim_create_autocmd("BufWritePre", {
+        desc = "Auto format before save",
         group = augroup,
         buffer = bufnr,
         callback = function()
