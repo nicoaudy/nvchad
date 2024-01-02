@@ -14,14 +14,17 @@ end
 
 lspconfig.tsserver.setup {
   capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
   init_options = {
+    maxTsServerMemory = 4000,
     preferences = {
-      disableSuggestions = true,
+      importModuleSpecifierPreference = "relative",
+      -- disableSuggestions = true,
     },
   },
   commands = {
