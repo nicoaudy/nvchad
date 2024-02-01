@@ -38,6 +38,15 @@ local plugins = {
   },
 
   -- Install a plugin
+
+  -- Cmdline for noice autocomplete folder
+  {
+    "hrsh7th/cmp-cmdline",
+    config = function()
+      require "custom.configs.cmdline"
+    end,
+  },
+
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -66,8 +75,9 @@ local plugins = {
       end, { expr = true })
     end,
   },
+
+  -- Multicursor <C-n>
   {
-    -- Multicursor <C-n>
     "mg979/vim-visual-multi",
     lazy = false,
   },
