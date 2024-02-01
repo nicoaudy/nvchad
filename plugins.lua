@@ -73,12 +73,23 @@ local plugins = {
   },
 
   {
-    "rcarriga/nvim-notify",
-    event = "BufWinEnter",
-    config = function()
-      vim.notify = require "notify"
-      -- vim.notify = require("notify").setup { background_colour = "#000000" }
-    end,
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    config = {
+      vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss Noice Message" }),
+    },
+    opts = {
+      routes = {
+        {
+          filter = { event = "notify", find = "No information available" },
+          opts = { skip = true },
+        },
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
   },
 
   -- rayso
@@ -117,6 +128,26 @@ local plugins = {
     },
     config = function()
       require "custom.configs.ts-autotag"
+    end,
+  },
+
+  -- Rust
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    dependencies = "neovim/nvim-lspconfig",
+    opts = function()
+      return require "custom.configs.rust-tools"
+    end,
+    config = function(_, opts)
+      require("rust-tools").setup(opts)
+    end,
+  },
+  {
+    "rust-lang/rust.vim",
+    ft = "rust",
+    init = function()
+      vim.g.rustfmt_autosave = 1
     end,
   },
 
