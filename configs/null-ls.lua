@@ -18,6 +18,11 @@ local sources = {
   b.formatting.gofmt,
   b.formatting.goimports,
   b.formatting.goimports_reviser,
+
+  -- Python
+  b.formatting.black,
+  b.diagnostics.mypy,
+  b.diagnostics.ruff,
 }
 
 null_ls.setup {

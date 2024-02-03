@@ -51,6 +51,12 @@ lspconfig["intelephense"].setup {
   end,
 }
 
+lspconfig["pyright"].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "python" },
+}
+
 -- configure default formats
 local servers = { "gopls", "html", "cssls", "tailwindcss" }
 for _, lsp in pairs(servers) do
