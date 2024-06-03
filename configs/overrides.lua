@@ -42,18 +42,18 @@ M.mason = {
     "php-cs-fixer",
 
     -- golang
-    "gopls",
-    "goimports",
-    "goimports-reviser",
+    -- "gopls",
+    -- "goimports",
+    -- "goimports-reviser",
 
     -- rust
-    "rust-analyzer",
+    -- "rust-analyzer",
 
     -- python
-    "black",
-    "mypy",
-    "ruff",
-    "pyright",
+    -- "black",
+    -- "mypy",
+    -- "ruff",
+    -- "pyright",
   },
 }
 
