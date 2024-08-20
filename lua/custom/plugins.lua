@@ -1,45 +1,66 @@
-local overrides = require "custom.configs.overrides"
-
----@type NvPluginSpec[]
-local plugins = {
-
-  -- Override plugin definition options
+return {
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    "stevearc/conform.nvim",
+    event = "BufWritePre", -- uncomment for format on save
+    opts = require "custom.overrides.conform",
   },
 
-  -- override plugin configs
+  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "custom.configs.lspconfig"
+    end,
+  },
+
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason,
+    opts = {
+      ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
+
+        -- web dev stuff
+        "css-lsp",
+        "emmet-ls",
+        "html-lsp",
+        "typescript-language-server",
+        "tailwindcss-language-server",
+        "prettierd",
+        "eslint-lsp",
+
+        "intelephense",
+        "php-cs-fixer",
+
+        -- python
+        "black",
+        "ruff",
+        "pyright",
+      },
+    },
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "bash",
+      },
+    },
   },
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
-
-  -- Cmdline for noice autocomplete folder
   {
     "hrsh7th/cmp-cmdline",
     config = function()
@@ -54,11 +75,14 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-  
-  -- github copilot free alternative
+
   {
     "Exafunction/codeium.vim",
     event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
       -- Change '<C-g>' here to any keycode you like.
       vim.g.codeium_no_map_tab = 1 --disable the <Tab> binding
@@ -149,40 +173,4 @@ local plugins = {
       vim.g.tmux_navigator_no_mappings = 1
     end,
   },
-
-  -- Rust
-  -- {
-  --   "simrat39/rust-tools.nvim",
-  --   ft = "rust",
-  --   dependencies = "neovim/nvim-lspconfig",
-  --   opts = function()
-  --     return require "custom.configs.rust-tools"
-  --   end,
-  --   config = function(_, opts)
-  --     require("rust-tools").setup(opts)
-  --   end,
-  -- },
-  -- {
-  --   "rust-lang/rust.vim",
-  --   ft = "rust",
-  --   init = function()
-  --     vim.g.rustfmt_autosave = 1
-  --   end,
-  -- },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
 }
-
-return plugins
