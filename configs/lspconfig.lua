@@ -51,11 +51,11 @@ lspconfig["intelephense"].setup {
   end,
 }
 
-lspconfig["pyright"].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { "python" },
-}
+-- lspconfig["pyright"].setup {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   filetypes = { "python" },
+-- }
 
 -- configure default formats
 local servers = {
