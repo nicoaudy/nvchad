@@ -58,7 +58,12 @@ lspconfig["pyright"].setup {
 }
 
 -- configure default formats
-local servers = { "gopls", "html", "cssls", "tailwindcss" }
+local servers = {
+  -- "gopls",
+  "html",
+  "cssls",
+  "tailwindcss"
+}
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities,

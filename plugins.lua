@@ -54,8 +54,9 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
+  
+  -- github copilot free alternative
   {
-    -- github copilot free alternative
     "Exafunction/codeium.vim",
     event = "VeryLazy",
     config = function()
@@ -85,9 +86,9 @@ local plugins = {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    config = {
-      vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss Noice Message" }),
-    },
+    config = function()
+      vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss Noice Message" })
+    end,
     opts = {
       routes = {
         {
@@ -141,25 +142,33 @@ local plugins = {
     end,
   },
 
-  -- Rust
   {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    dependencies = "neovim/nvim-lspconfig",
-    opts = function()
-      return require "custom.configs.rust-tools"
-    end,
-    config = function(_, opts)
-      require("rust-tools").setup(opts)
-    end,
-  },
-  {
-    "rust-lang/rust.vim",
-    ft = "rust",
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
     init = function()
-      vim.g.rustfmt_autosave = 1
+      vim.g.tmux_navigator_no_mappings = 1
     end,
   },
+
+  -- Rust
+  -- {
+  --   "simrat39/rust-tools.nvim",
+  --   ft = "rust",
+  --   dependencies = "neovim/nvim-lspconfig",
+  --   opts = function()
+  --     return require "custom.configs.rust-tools"
+  --   end,
+  --   config = function(_, opts)
+  --     require("rust-tools").setup(opts)
+  --   end,
+  -- },
+  -- {
+  --   "rust-lang/rust.vim",
+  --   ft = "rust",
+  --   init = function()
+  --     vim.g.rustfmt_autosave = 1
+  --   end,
+  -- },
 
   -- To make a plugin not be loaded
   -- {

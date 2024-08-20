@@ -15,13 +15,12 @@ local sources = {
   b.formatting.stylua,
 
   -- Go
-  b.formatting.gofmt,
-  b.formatting.goimports,
-  b.formatting.goimports_reviser,
+  -- b.formatting.gofmt,
+  -- b.formatting.goimports,
+  -- b.formatting.goimports_reviser,
 
   -- Python
   b.formatting.black,
-  b.diagnostics.mypy,
   b.diagnostics.ruff,
 }
 

@@ -11,8 +11,8 @@ M.treesitter = {
     "tsx",
     "markdown",
     "markdown_inline",
-    "go",
-    "rust",
+    -- "go",
+    -- "rust",
     "python",
   },
   indent = {
@@ -42,16 +42,15 @@ M.mason = {
     "php-cs-fixer",
 
     -- golang
-    "gopls",
-    "goimports",
-    "goimports-reviser",
+    -- "gopls",
+    -- "goimports",
+    -- "goimports-reviser",
 
     -- rust
-    "rust-analyzer",
+    -- "rust-analyzer",
 
     -- python
     "black",
-    "mypy",
     "ruff",
     "pyright",
   },

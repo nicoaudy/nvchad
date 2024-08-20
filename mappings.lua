@@ -24,6 +24,12 @@ M.general = {
     ["ss"] = { ":split<Return><C-w>w", opts }, -- Split window
     ["sv"] = { ":vsplit<Return><C-w>w", opts },
 
+    ["<c-h>"] = { "<cmd>:TmuxNavigateLeft<cr>", opts },
+    ["<c-j>"] = { "<cmd>:TmuxNavigateDown<cr>", opts },
+    ["<c-k>"] = { "<cmd>:TmuxNavigateUp<cr>", opts },
+    ["<c-l>"] = { "<cmd>:TmuxNavigateRight<cr>", opts },
+    ["<c-\\>"] = { "<cmd>:TmuxNavigatePrevious<cr>", opts },
+
     -- Move text up and down
     ["<A-j>"] = { "<Esc>:m .+1<CR>==gi", opts },
     ["<A-k>"] = { "<Esc>:m .-2<CR>==gi", opts },
