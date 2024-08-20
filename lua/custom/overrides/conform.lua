@@ -8,6 +8,7 @@ local options = {
     typescript = { "prettierd" },
     typescriptreact = { "prettierd" },
     python = { "isort", "black" },
+    php = { "php-cs-fixer" },
   },
 
   format_on_save = {

@@ -1,5 +1,6 @@
-return {
-  require "custom.plugins",
+local custom_plugins = require "custom.plugins"
+
+return vim.list_extend({
 
   {
     "stevearc/conform.nvim",
@@ -24,4 +25,4 @@ return {
   -- 		},
   -- 	},
   -- },
-}
+}, custom_plugins)
