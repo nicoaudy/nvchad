@@ -5,6 +5,20 @@ return {
     opts = require "custom.overrides.conform",
   },
 
+  {
+    "NvChad/nvterm",
+    config = function()
+      require("nvterm").setup()
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = { side = "right" },
+    },
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
