@@ -25,12 +25,9 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
-require "options"
 require "nvchad.autocmds"
-
-vim.schedule(function()
-  require "mappings"
-end)
+require "options"
+require "mappings"
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
