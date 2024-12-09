@@ -17,7 +17,8 @@ for _, lsp in ipairs(servers) do
 end
 
 -- configuring single server, example: typescript
-lspconfig.tsserver.setup {
+-- rename tsserver to ts_ls
+lspconfig.ts_ls.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
